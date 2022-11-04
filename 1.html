@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="draw" width="800" height="800"></canvas>
+</body>
+
+<script>
+    //https://www.canvasapi.cn/CanvasRenderingContext2D/fillRect
+    /** @type {HTMLCanvasElement} */
+    var c = document.getElementById("draw");
+    var ca = c.getContext("2d");
+    
+    ca.fillStyle = "red";
+    //数字前必须加空格(x, y, width, height)
+    ca.fillRect(10, 10, 100, 100)
+    //context.clearRect(x, y, width, height);
+    ca.clearRect(20, 20, 20, 20)
+
+    ca.beginPath();
+    //context.arc(x, y, 半径, 圆弧开始的角度, endAngle [, anticlockwise]);
+    ca.arc(400, 400, 100, 0, Math.PI*2);
+    ca.stroke()
+</script>
+</html>
