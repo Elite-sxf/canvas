@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>时潇飞</h1>
+    <canvas id="aa" width="1500" height="500" ></canvas>
+</body>
+
+<script>
+    /**@type {HTMLCanvasElement}*/
+    var c = document.getElementById("aa");
+    var cc = c.getContext("2d");
+    cc.fillStyle = "lightgreen";
+    cc.fillRect(0, 0, 1500, 500)
+
+    cc.lineJoin ="round";
+    cc.lineWidth = 5;
+    //划线
+    cc.beginPath();
+
+    //时
+    cc.moveTo(50,50);
+    cc.lineTo(50, 360);
+    cc.lineTo(150, 360);
+    cc.lineTo(150, 50);
+    cc.lineTo(50, 50);
+    //这里回到初始点有一个小的缝隙 所以我给他再往下花一点 覆盖它 好像不用 中间那一横 我直接画下去
+    // cc.lineTo(50, 52);
+    cc.lineTo(50, 180);
+    cc.lineTo(150, 180);
+
+    cc.moveTo(190,100);
+    cc.lineTo(350, 100);
+    cc.moveTo(300,30);
+    cc.lineTo(300,360);
+    cc.lineTo(240,320);
+
+    cc.moveTo(220,180);
+    cc.lineTo(260,230)
+
+    //潇
+    cc.moveTo(450,70);
+    cc.lineTo(500,110);
+    cc.moveTo(450,170);
+    cc.lineTo(500,210);
+    cc.moveTo(450,370);
+    cc.lineTo(500,270);
+
+    cc.moveTo(530,100);
+    cc.lineTo(770,100);
+    cc.moveTo(590,70);
+    cc.lineTo(590,130);
+    cc.moveTo(710,70);
+    cc.lineTo(710,130);
+
+    cc.moveTo(560,150);
+    cc.lineTo(740,150);
+    cc.lineTo(740,230);
+    cc.lineTo(560,230);
+
+    cc.moveTo(550,190)
+    cc.lineTo(770,190)
+
+    cc.moveTo(650,140);
+    cc.lineTo(650,370);
+
+    cc.moveTo(563,260);
+    cc.bezierCurveTo(563,260, 570,310, 543,370)
+    // cc.lineTo(563,370)
+
+    cc.moveTo(610,275);
+    cc.lineTo(595,340);
+
+    cc.moveTo(690,275);
+    cc.lineTo(705,340);
+
+    cc.moveTo(740,260)
+    cc.lineTo(740,370)
+
+    //飞
+    cc.moveTo(880,100)
+    cc.lineTo(1040,100)
+    cc.lineTo(1040,101)
+
+    cc.moveTo(1040,100)
+    // cc.lineTo(1100,370)
+    cc.bezierCurveTo(1040,100, 1040,270, 1100,370)
+    cc.lineTo(1140,320)
+
+    cc.moveTo(1047,200)
+    cc.lineTo(1110,140)
+
+    cc.moveTo(1047,200)
+    cc.lineTo(1110,260)
+
+
+
+    //填充
+    cc.stroke();
+
+</script>
+</html>
