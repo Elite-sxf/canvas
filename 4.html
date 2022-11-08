@@ -7,11 +7,58 @@
     <title>Document</title>
 </head>
 <body>
+    <div>每段长度
+        <input type="text" id="ipt">
+    </div>
+    <div class="radio">
+        转动方向
+        <label>
+            顺时针
+            <input type="radio" name="true" class="derRadio">
+        </label>
+        <label>
+            逆时针
+            <input type="radio" name="false" id="" class="derRadio">
+        </label>
+    </div>
+    <button style="display:block;margin:20px 0">启动</button>
     <canvas id="canvas" width="1000" height="500"></canvas>
 </body>
 
 
 <script>
+    var ipt = document.getElementById("ipt")
+    var ra = document.getElementsByClassName("derRadio");
+    var btn = document.getElementsByTagName("button")[0];
+    var arr = [...ra];
+    console.log(arr);
+
+    arr.forEach(item => {
+        item.addEventListener("change",()=> {
+            arr.forEach(v=> {
+                if(v.name!==item.name) {
+                    v.checked = false;
+                }
+            })
+        })
+    })
+    var time
+    btn.onclick = ()=> {
+        clearInterval(time)
+        c.clearRect(0,0,cc.width,cc.height)
+        let obj = arr.find(item => {
+            return item.checked
+        }) || {}
+        let len = ipt.value&&[ipt.value] || [10]; //长度
+        let flag = true;
+        if(obj.checked&&obj.name)flag=obj.name
+
+        time = setInterval(() => {
+            run(len,flag)
+
+        }, 100);
+    }
+
     /**@type {HTMLCanvasElement} */
 
     var cc = document.getElementById("canvas")
@@ -19,13 +66,14 @@
 
     c.lineWidth = 2
     c.beginPath()
-    c.setLineDash([10])
     c.moveTo(0,10)
     c.lineTo(500,10)
     c.stroke()
 
     var offset = 0;
-    var draw = ()=> {
+    var draw = (len=[10])=> {
+
+        c.setLineDash(len)
         c.clearRect(0,0,cc.width,cc.height)
 
         c.moveTo(0,10)
@@ -35,14 +83,23 @@
         c.strokeRect(0,50,200,100);
         c.lineDashOffset = offset;
     }
+    draw()
 
-    var run = ()=> {
-        offset += 0.5;
+    var run = (a=[10],b=true)=> {
+        console.log(a,b);
+        
+        if(b==="true") {
+            offset -= 0.5;
+        }
+        else{
+            offset += 0.5;
+        }
 
-        draw()
-        requestAnimationFrame(run)
+        draw(a)
+        // requestAnimationFrame(run)
+        
 
     }
-    run();
+    // run();
 </script>
 </html>

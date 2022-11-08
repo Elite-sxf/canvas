@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="canvas" width="1500" height="500"></canvas>
+    <canvas id="canvas2" width="1500" height="500"></canvas>
+    
+</body>
+
+<script>
+    /**@type {HTMLCanvasElement}*/
+    var cc = document.getElementById("canvas");
+    var c = cc.getContext("2d");
+    var cc2 = document.getElementById("canvas2");
+    var c2 = cc2.getContext("2d");
+
+    var img = new Image();
+    // img.crossOrigin = 'anonymous';  
+    img.src = "./assets/1.jpg"
+    //图片加载的慢 必须再图片出来的时候才能调用这个方法
+    img.onload = ()=> {
+        c.drawImage(img,0, 0)
+        // c.strokeText("HH",20,100);
+    }
+
+    var img2 = new Image();
+    img2.src = "./assets/hs.jpg"
+    // img2.crossOrigin = 'anonymous'; 
+    img2.onload = ()=> {
+        c.drawImage(img2,00,0,147,165)
+        
+    }
+    // window.onload=()=> {
+       var imageData = c.getImageData(0,0,147,165)
+       console.log(imageData);
+       
+    setTimeout(()=> {
+
+        c.putImageData(imageData,0,0,100,50,100,100)
+    },10) 
+    // }
+    
+</script>
+</html>

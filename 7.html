@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="canvas" width="240" height="120">
+        <button id="button1"></button>
+        <button id="button2"></button>
+    </canvas>
+</body>
+
+<script>
+    
+    var btn1 = document.getElementById("button1");
+    var btn2 = document.getElementById("button2");
+    
+    var cc = document.getElementsByTagName("canvas")[0]
+    var c = cc.getContext("2d")
+
+    var draw = function() {
+        c.clearRect(0,0,240,120)
+        c.font = '16px STHeiti, SimHei';
+        c.textAlign = 'center';
+        c.textBaseline = 'middle';
+        c.beginPath()
+        c.arc(60,60,50,0,Math.PI*2)
+        c.fillStyle = "red"
+        c.fill()
+        c.fillStyle = "black"
+        c.fillText("按钮1",60,60)
+        c.drawFocusIfNeeded(btn1)
+
+        c.beginPath()
+        c.arc(180,60,50,0,Math.PI*2)
+        c.fillStyle = "lightgreen"
+        c.fill()
+        c.fillStyle = "black"
+        c.fillText("按钮2",180,60)
+        c.drawFocusIfNeeded(btn2)
+        
+        c.font = '10px';
+        c.fillText(c.isPointInPath(140,50),130,2)
+    }
+    draw()
+
+    cc.addEventListener("click",(e)=> {
+        console.log(e);
+        var x = e.clientX;
+        var y = e.clientY
+        if(x>=10&&x<=110&&y>=10&&y<=110) {
+            btn1.focus()
+            draw()
+        }else if(x>=130&&x<=230&&y>=10&&y<=110) {
+            btn2.focus()
+            draw()
+        }
+        
+    })
+</script>
+</html>
