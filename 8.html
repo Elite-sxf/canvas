@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="canvas" width="1500" height="500"></canvas>
+    
+</body>
+<script>
+    /**@type {HTMLCanvasElement}*/
+    var cc = document.getElementById("canvas");
+    var c = cc.getContext("2d");
+    c.save()
+    // c.rotate(45)
+    c.scale(1,-1)
+
+    c.font = "24px STHeiTi, SimHei"
+    let txt = c.measureText("时潇飞")
+    
+    c.fillText("时潇飞",80,-40)
+    c.fillText("hh",80,-80)
+
+    c.restore()
+
+    c.fillStyle ="red"
+    c.font ="12px Arial"
+    c.fillText("宽"+txt.width,txt.width+80,36)
+
+    c.save()
+    c.fillStyle = "#000"
+    c.setTransform(0.5,3,1,2,0,0)  // ax+cy+e  10+200  bx+dy+f (sx, 0, 0, sy, 0, 0);，等同于scale(sx, sy);
+    c.fillRect(10,200,100,100)
+</script>
+</html>

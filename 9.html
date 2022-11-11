@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="canvas" width="1500" height="500"></canvas>
+    
+</body>
+<script>
+    /**@type {HTMLCanvasElement}*/
+    var cc = document.getElementById("canvas");
+    var c = cc.getContext("2d");
+    
+    c.save()
+    c.translate(200,200)
+
+    c.fillStyle = "red"
+    c.fillRect(0,0,100,100)
+    c.restore()
+
+    c.setLineDash([10])
+    c.lineWidth = 10
+    c.strokeStyle="green"
+    c.strokeRect(20,20,100,100)
+</script>
+</html>
