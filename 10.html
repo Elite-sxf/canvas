@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #good {
+            width: 500px;
+            height: 00px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size:50px;
+            font-weight: 900;
+            text-align: center;
+            line-height: 200px;
+        }
+        #canvas {
+            position: absolute;
+
+        }
+    </style>
+</head>
+<body>
+    <div id="good">谢谢惠顾</div>
+    <canvas id="canvas" width="500" height="300"></canvas>
+</body>
+<script>
+    /**@type {HTMLCanvasElement}*/
+    var cc = document.getElementById("canvas")
+    var c = cc.getContext("2d")
+
+    c.fillStyle = ""
+    var img = new Image()
+    img.src = "./assets/ma.png"
+    img.onload = function(){
+        c.drawImage(img,0,0,500,300)
+    }
+    var  flag = false;
+    cc.onmousedown = function(e) {
+        flag = true        
+    }
+    cc.onmouseup = function(e) {
+        flag = false        
+    }
+    cc.onmousemove = function(e) {
+        if(flag) {
+            const x = e.clientX;
+            const y = e.clientY;
+            
+            c.globalCompositeOperation ="destination-out"
+            c.arc(x,y,20,0,Math.PI*2)
+            c.fill()
+        }
+    }
+
+    var r = Math.random()
+    console.log(r);
+    
+    if(r<0.1) {
+        document.getElementById("good").innerHTML = "恭喜获得RR5元劵"
+    }
+</script>
+</html>
